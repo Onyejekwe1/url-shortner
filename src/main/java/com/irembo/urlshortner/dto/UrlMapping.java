@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UrlMapping {
+    private String id;
+    
     private String shortUrl;
 
     private String originalUrl;

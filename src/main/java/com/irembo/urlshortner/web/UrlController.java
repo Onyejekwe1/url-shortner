@@ -46,7 +46,7 @@ public class UrlController {
     }
 
     @GetMapping("/urls/original/{shortUrl}")
-    public ResponseEntity<Url> getOriginalUrl(@PathVariable String shortUrl, HttpServletResponse response) throws IOException {
+    public ResponseEntity<Url> getOriginalUrl(@PathVariable String shortUrl) {
         Url url = urlService.getOriginalUrl(shortUrl);
         if (url != null) {
             urlService.incrementClicks(shortUrl);
@@ -64,7 +64,7 @@ public class UrlController {
     }
 
     private UrlMapping mapToUrlMapping(Url url) {
-        return new UrlMapping(url.getShortUrl(), url.getOriginalUrl(), url.getExpirationDateTime(), url.getClicks(), url.getCustomUrl());
+        return new UrlMapping(url.getId(), url.getShortUrl(), url.getOriginalUrl(), url.getExpirationDateTime(), url.getClicks(), url.getCustomUrl());
     }
 
 }
